@@ -120,6 +120,10 @@ class Tpv
         $this->setValue($options, 'Tipo_operacion');
         $this->setValue($options, 'Datos_operaciones');
 
+        $this->setValue($options, 'PAN');
+        $this->setValue($options, 'Caducidad');
+        $this->setValue($options, 'CVV2');
+
         $this->setValueLength('MerchantID', 9);
         $this->setValueLength('AcquirerBIN', 10);
         $this->setValueLength('TerminalID', 8);
