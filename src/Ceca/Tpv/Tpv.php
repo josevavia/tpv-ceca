@@ -10,7 +10,7 @@ class Tpv
         'TerminalID' => '1',
         'TipoMoneda' => '978',
         'Exponente' => '2',
-        'Cifrado' => 'SHA1',
+        'Cifrado' => 'SHA2',
         'Idioma' => '1',
         'Pago_soportado' => 'SSL'
     );
@@ -215,7 +215,7 @@ class Tpv
             $key .= $this->values[$field];
         }
 
-        return sha1($this->options['ClaveCifrado'].$key);
+        return $this->makeHash($this->options['ClaveCifrado'].$key);
     }
 
     public function checkTransaction(array $post)
@@ -235,7 +235,7 @@ class Tpv
             $key .= $post[$field];
         }
 
-        $signature = sha1($this->options['ClaveCifrado'].$key);
+        $signature = $this->makeHash($this->options['ClaveCifrado'].$key);
 
         if ($signature !== $post['Firma']) {
             throw new Exception(sprintf('Signature not valid (%s != %s)', $signature, $post['Firma']));
@@ -248,5 +248,9 @@ class Tpv
     {
         return $this->success;
     }
+
+    protected function makeHash($message) {
+    	return hash('sha256', $message);
+	}
 }
 
