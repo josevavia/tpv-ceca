@@ -1,6 +1,8 @@
 CECA TPV
 =====
 
+Basado en https://github.com/eusonlito/Ceca-TPV
+
 Este script te permitirá generar los formularios para la integración de la pasarela de pago de sistemas CECA
 
 ## Ejemplo de pago instantáneo
