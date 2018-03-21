@@ -221,7 +221,7 @@ class Tpv
     public function checkTransaction(array $post)
     {
         if (empty($post) || empty($post['Firma'])) {
-            throw new Exception('_POST data is empty');
+            throw new Exception('POST data is empty');
         }
 
         $fields = array('MerchantID', 'AcquirerBIN', 'TerminalID', 'Num_operacion', 'Importe', 'TipoMoneda', 'Exponente', 'Referencia');
@@ -229,7 +229,7 @@ class Tpv
 
         foreach ($fields as $field) {
             if (empty($post[$field])) {
-                throw new Exception(sprintf('Field <strong>%s</strong> is empty and is required to verify transaction'));
+                throw new Exception(sprintf('Field <strong>%s</strong> is empty and is required to verify transaction'), $field);
             }
 
             $key .= $post[$field];
