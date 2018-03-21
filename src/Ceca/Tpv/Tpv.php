@@ -249,8 +249,17 @@ class Tpv
         return $this->success;
     }
 
-    protected function makeHash($message) {
-    	return hash('sha256', $message);
+    protected function makeHash($message)
+	{
+		switch ($this->options['Cifrado']) {
+			case 'SHA1':
+				return sha1($message);
+
+			case 'SHA2':
+			default:
+				return hash('sha256', $message);
+
+		}
 	}
 }
 
