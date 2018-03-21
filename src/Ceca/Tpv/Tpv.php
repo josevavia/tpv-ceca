@@ -229,7 +229,7 @@ class Tpv
 
         foreach ($fields as $field) {
             if (empty($post[$field])) {
-                throw new Exception(sprintf('Field <strong>%s</strong> is empty and is required to verify transaction'), $field);
+                throw new Exception(sprintf('Field <strong>%s</strong> is empty and is required to verify transaction', $field));
             }
 
             $key .= $post[$field];
