@@ -16,7 +16,7 @@ class Tpv
     );
 
     private $o_required = array('Environment', 'ClaveCifrado', 'MerchantID', 'AcquirerBIN', 'TerminalID', 'TipoMoneda', 'Exponente', 'Cifrado', 'Pago_soportado');
-    private $o_optional = array('Idioma', 'Descripcion', 'URL_OK', 'URL_NOK', 'Tipo_operacion', 'Datos_operaciones');
+    private $o_optional = array('Idioma', 'Descripcion', 'URL_OK', 'URL_NOK', 'Tipo_operacion', 'Datos_operaciones', 'PAN', 'Caducidad', 'CVV2', 'Pago_elegido');
 
     private $environment = '';
     private $environments = array(
@@ -122,13 +122,10 @@ class Tpv
 
         // if we get credit card number
         if (isset($options['PAN'])) {
-			$options['Pago_soportado'] = 'SSL';
 			$options['Pago_elegido'] = 'SSL';
-
 			$this->setValue($options, 'PAN');
 			$this->setValue($options, 'Caducidad');
 			$this->setValue($options, 'CVV2');
-			$this->setValue($options, 'Pago_soportado');
 			$this->setValue($options, 'Pago_elegido');
 		}
 
