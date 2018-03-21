@@ -120,9 +120,17 @@ class Tpv
         $this->setValue($options, 'Tipo_operacion');
         $this->setValue($options, 'Datos_operaciones');
 
-        $this->setValue($options, 'PAN');
-        $this->setValue($options, 'Caducidad');
-        $this->setValue($options, 'CVV2');
+        // if we get credit card number
+        if (isset($options['PAN'])) {
+			$options['Pago_soportado'] = 'SSL';
+			$options['Pago_elegido'] = 'SSL';
+
+			$this->setValue($options, 'PAN');
+			$this->setValue($options, 'Caducidad');
+			$this->setValue($options, 'CVV2');
+			$this->setValue($options, 'Pago_soportado');
+			$this->setValue($options, 'Pago_elegido');
+		}
 
         $this->setValueLength('MerchantID', 9);
         $this->setValueLength('AcquirerBIN', 10);
