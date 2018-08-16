@@ -193,13 +193,7 @@ class Tpv
 
     public function getAmount($amount)
     {
-        if (empty($amount)) {
-            return '000';
-        } elseif (preg_match('/[\.,]/', $amount)) {
-            return str_replace(array('.', ','), '', $amount);
-        } else {
-            return ($amount * 100);
-        }
+    	return $amount * 100;
     }
 
     public function getSignature()
