@@ -171,6 +171,15 @@ class Tpv
         return trim($html);
     }
 
+    public function getHiddens()
+	{
+		if (empty($this->hidden)) {
+			throw new Exception('Form fields must be initialized previously');
+		}
+
+		return $this->hidden;
+	}
+
     private function setValueDefault(array $options, $option)
     {
         if (isset($options[$option])) {
